@@ -28,6 +28,9 @@ UserSchema.methods.generateJWT = async function () {
     expiresIn: "30d",
   });
 };
+UserSchema.methods.comparePassword = async function (enteredPassword) {
+  return await compare(enteredPassword, this.password);
+};
 
 const User = model("User", UserSchema);
 export default User;
